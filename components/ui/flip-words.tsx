@@ -79,6 +79,7 @@ export const FlipWords = ({
               duration: 0.4,
             }}
             className="inline-block"
+            style={{ whiteSpace: letter === " " ? "pre" : "normal" }} // Ensure spaces are visible
           >
             {letter}
           </motion.span>
