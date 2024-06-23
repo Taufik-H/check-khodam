@@ -25,6 +25,7 @@ interface FormInputProps {
   onSubmit: (name: string) => void;
   buttonText: string;
   isResult: boolean;
+  onLoading : boolean;
   onReset: () => void;
 }
 
@@ -33,6 +34,7 @@ export const FormInput: React.FC<FormInputProps> = ({
   buttonText,
   isResult,
   onReset,
+  onLoading,
 }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -74,9 +76,12 @@ export const FormInput: React.FC<FormInputProps> = ({
           )}
         />
         <div className="flex gap-3 justify-center items-center">
+          {onLoading ? 
           <Button type="submit" className="w-full" disabled={isResult}>
             {buttonText}
-          </Button>
+          </Button> : <Button  className="w-full" disabled>
+            Loading ...
+          </Button> }
           <Button
             size={"icon"}
             variant={"outline"}
