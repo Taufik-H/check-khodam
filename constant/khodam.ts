@@ -1,5 +1,8 @@
 export const KHODAM = [
   {
+    name:"Kunti Bogel",
+  },
+  {
     name: "ubur-ubur",
   },
   {
