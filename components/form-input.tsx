@@ -8,10 +8,8 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -23,7 +21,12 @@ const FormSchema = z.object({
   }),
 });
 
-export function FormInput({ onSubmit }: { onSubmit: (name: string) => void }) {
+interface FormInputProps {
+  onSubmit: (name: string) => void;
+  buttonText: string;
+}
+
+export const FormInput: React.FC<FormInputProps> = ({ onSubmit, buttonText }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -31,7 +34,7 @@ export function FormInput({ onSubmit }: { onSubmit: (name: string) => void }) {
     },
   });
 
-  function handleSubmit(data: z.infer<typeof FormSchema>) {
+  const handleSubmit = (data: z.infer<typeof FormSchema>) => {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -40,8 +43,9 @@ export function FormInput({ onSubmit }: { onSubmit: (name: string) => void }) {
         </pre>
       ),
     });
+
     onSubmit(data.name);
-  }
+  };
 
   return (
     <Form {...form}>
@@ -66,9 +70,9 @@ export function FormInput({ onSubmit }: { onSubmit: (name: string) => void }) {
           )}
         />
         <Button type="submit" className="w-full">
-          Cek Sekarang
+          {buttonText}
         </Button>
       </form>
     </Form>
   );
-}
+};
