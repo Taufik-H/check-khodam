@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa6";
 import React, { useState } from "react";
 import {
@@ -12,18 +12,27 @@ import {
 import { ModeToggle } from "./mode-toggle";
 import { FormInput } from "./form-input";
 import Link from "next/link";
-import { KHODAM } from "@/constant/khodam";
-import { FlipWords } from "./ui/flip-words";
+import { KHODAM } from "./khodam-list";
+import { FlipWords } from "./flip-words";
 
-const CardCheckKhodam = () => {
-  const [khodam, setKhodam] = useState("");
+const CardCheckKhodam: React.FC = () => {
+  const [khodam, setKhodam] = useState<string>("");
   const [username, setUsername] = useState<string>("");
+  const [buttonText, setButtonText] = useState<string>("Cek Sekarang");
 
   const handleKhodamCheck = (name: string) => {
-    const randomKhodam = KHODAM[Math.floor(Math.random() * KHODAM.length)].name;
-    setKhodam(randomKhodam);
-    setUsername(name);
+    if (buttonText === "Cek Sekarang") {
+      const randomKhodam = KHODAM[Math.floor(Math.random() * KHODAM.length)].name;
+      setKhodam(randomKhodam);
+      setUsername(name);
+      setButtonText("Coba Lagi");
+    } else {
+      setKhodam("");
+      setUsername("");
+      setButtonText("Cek Sekarang");
+    }
   };
+
   return (
     <div className="px-5">
       <Card className="min-w-[350px]">
@@ -32,18 +41,15 @@ const CardCheckKhodam = () => {
           <CardDescription>Langsung aja cek kalo lu kepo.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="w-full border rounded-lg h-32 flex py-5 flex-col justify-start items-center">
-            {username && (
-              <p className="text-xs w-9/12 text-center">
-                <span className="font-bold text-yellow-500">{username}</span>{" "}
-                nama khodam kamu :
-              </p>
+          <div className="w-full border rounded-lg h-32 flex flex-col justify-center items-center">
+            {username && <p>{username} khodam yang kamu miliki bernama</p>}
+            {khodam ? (
+              <FlipWords words={[khodam]} auto={false} />
+            ) : (
+              <p>halo</p>
             )}
-            <div className="text-2xl font-bold mt-4">
-              {khodam ? <FlipWords words={[khodam]} /> : <p>Check khodam</p>}
-            </div>
           </div>
-          <FormInput onSubmit={handleKhodamCheck} />
+          <FormInput onSubmit={handleKhodamCheck} buttonText={buttonText} />
         </CardContent>
         <CardFooter className="flex justify-center gap-3 items-center">
           <Link href="https://instagram.com/hai.opit">
