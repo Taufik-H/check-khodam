@@ -83,6 +83,7 @@ const CardCheckKhodam: React.FC = () => {
             buttonText="Cek Sekarang"
             isResult={khodam !== ""}
             onReset={resetForm}
+            onLoading={isLoading}
           />
         </CardContent>
         <CardFooter className="flex justify-center gap-3 items-center">
