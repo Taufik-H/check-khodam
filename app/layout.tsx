@@ -6,8 +6,13 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Check Khodam",
+  title: "Check Khodamn",
+  metadataBase: new URL("https://check-khodam-three.vercel.app"),
   description: "Fun aja jangan dibawa ke hati ☺️",
+  openGraph: {
+    siteName: "Check Khodamn",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
