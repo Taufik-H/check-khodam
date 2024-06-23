@@ -42,7 +42,7 @@ const CardCheckKhodam: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="w-full border rounded-lg h-32 flex flex-col justify-center items-center">
-            {username && <p className="text-xs mx-auto w-9/12 text-center mb-5">{username} khodam yang kamu miliki bernama</p>}
+            {username && <p className="text-xs mx-auto w-9/12 text-center mb-5"> <span className="text-yellow-500 font-bold mr-3"> {username} </span> khodam yang kamu miliki bernama</p>}
             {khodam && 
       <div className="text-2xl font-black mx-auto">
         <FlipWords words={[khodam]} auto={false} />
