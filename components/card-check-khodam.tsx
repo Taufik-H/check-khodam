@@ -12,8 +12,8 @@ import {
 import { ModeToggle } from "./mode-toggle";
 import { FormInput } from "./form-input";
 import Link from "next/link";
-import { KHODAM } from "./khodam-list";
-import { FlipWords } from "./flip-words";
+import { KHODAM } from "@/constant/khodam";
+import { FlipWords } from "@/components/ui/flip-words";
 
 const CardCheckKhodam: React.FC = () => {
   const [khodam, setKhodam] = useState<string>("");
