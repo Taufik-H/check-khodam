@@ -16,6 +16,7 @@ export const FlipWords = ({
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  console.log(currentWord);
 
   const startAnimation = useCallback(() => {
     if (auto) {
