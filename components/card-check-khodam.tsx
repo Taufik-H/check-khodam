@@ -86,11 +86,16 @@ const CardCheckKhodam: React.FC = () => {
           />
         </CardContent>
         <CardFooter className="flex justify-center gap-3 items-center">
-          <Link href="https://instagram.com/hai.opit">
+          <Link href="https://instagram.com/hai.opit" target="_blank">
             <FaInstagram size={20} />
           </Link>
-          <FaFacebook size={20} />
-          <FaGithub size={20} />
+          <Link href={"https://www.facebook.com/hai.opit"} target="_blank">
+            <FaFacebook size={20} />
+          </Link>
+          <Link href={"https://github.com/Taufik-H/"} target="_blank">
+            <FaGithub size={20} />
+          </Link>
+
           <ModeToggle />
         </CardFooter>
       </Card>
