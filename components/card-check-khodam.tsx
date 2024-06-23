@@ -43,11 +43,12 @@ const CardCheckKhodam: React.FC = () => {
         <CardContent>
           <div className="w-full border rounded-lg h-32 flex flex-col justify-center items-center">
             {username && <p className="text-xs mx-auto w-9/12 text-center mb-5">{username} khodam yang kamu miliki bernama</p>}
-            {khodam ? (
-              <FlipWords words={[khodam]} auto={false} />
-            ) : (
-              " "
-            )}
+            {khodam && 
+      <div className="text-2xl font-black mx-auto">
+        <FlipWords words={[khodam]} auto={false} />
+      </div>
+              }
+      
           </div>
           <FormInput onSubmit={handleKhodamCheck} buttonText={buttonText} />
         </CardContent>
