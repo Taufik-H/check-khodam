@@ -23,7 +23,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function FormInput() {
+export function FormInput({ onSubmit }: { onSubmit: (name: string) => void }) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -31,7 +31,7 @@ export function FormInput() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function handleSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -40,12 +40,13 @@ export function FormInput() {
         </pre>
       ),
     });
+    onSubmit(data.name);
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="w-full space-y-6 mt-4"
       >
         <FormField
